@@ -1,11 +1,12 @@
-const loadData = (region) => {
-    fetch(`https://restcountries.com/v3.1/region/${region}`)
+const loadData = (region = '', regionlis = 'region') => {
+    fetch(`https://restcountries.com/v3.1/${regionlis}/${region}`)
     .then(res => res.json())
     .then(data => showDisplay(data))
 }
 
 const showDisplay = (data)=>{
     const countryContainer = document.getElementById('country-container');
+    console.log(data);
     countryContainer.innerHTML = '';
     data.forEach(element => {
         const newElement = document.createElement('div');
@@ -14,10 +15,9 @@ const showDisplay = (data)=>{
             <img class="w-full h-40" src="${element.flags.png}" alt="">
             <h2 class="my-2">Conutry Name: ${element.name.common}</h2>
             <h3 class="mb-2">Capital City: ${element.capital ? element.capital[0] : 'No Capital'}</h3>
-            <h4>Region: ${element.region}</h4>
+            <h4>Languages: ${Object.values(element.languages)[0]}</h4>
         `;
-
-        countryContainer.appendChild(newElement)
+        countryContainer.appendChild(newElement);
     });
 }
 
@@ -43,12 +43,11 @@ const languageShow = (data) =>{
     }
     languageData.forEach(element =>{
         const newElement = document.createElement('li');
-        newElement.classList.add('cursor-pointer', 'w-100')
+        newElement.classList.add('cursor-pointer', 'w-100');
         newElement.innerHTML = `
-        <button class="text-lg py-2 text-start hover:text-red-500 ">${element}</button>
+        <button onclick="loadData('${element}', 'lang');" class="text-lg py-2 text-start hover:text-red-500 ">${element}</button>
         `;
         langContainer.appendChild(newElement);
-        
     })
 }
 
@@ -61,6 +60,5 @@ const filterRegion = (elementId) =>{
     filterRegion.classList.toggle('hidden');
 }
 
-
 languageData();
-loadData('africa');
+loadData('Africa');
