@@ -7,22 +7,32 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="">
-    <section class="flex flex-col items-end px-20 py-8">
-        <button onclick="filterRegion()" class="px-8 w-48 py-2 border rounded bg-white relative">Filter by Region</button>
-        <div id="region" class="hidden absolute top-20">
-            <div class="px-4 bg-white flex flex-col gap-1 mt-2 border w-48 py-4 items-start">
-                <button onclick="regionClick('africa')" class="w-full text-start py-2 text-lg hover:text-red-500">Africa</button>
-                <button onclick="regionClick('ameerica')" class="w-full text-start py-2 text-lg hover:text-red-500">Ameerica</button>
-                <button onclick="regionClick('asia')"  class="w-full text-start py-2 text-lg hover:text-red-500">Asia</button>
-                <button onclick="regionClick('europe')"  class="w-full text-start py-2 text-lg hover:text-red-500">Europe</button>
-                <button onclick="regionClick('oceania')"  class="w-full text-start py-2 text-lg hover:text-red-500">Oceania</button>
+    <section class="w-11/12 mt-6 mx-auto flex justify-between items-center">
+        <div class="w-full">
+            <button onclick="filterRegion('region')" class="px-8 w-48 py-2 border rounded bg-blue-400 text-white relative">Filter by Region</button>
+            <div id="region" class="hidden absolute top-20">
+                <div class="px-4 bg-white flex flex-col gap-1 mt-2 border w-48 py-4 items-start">
+                    <button onclick="regionClick('africa')" class="w-full text-start py-2 text-lg hover:text-red-500">Africa</button>
+                    <button onclick="regionClick('ameerica')" class="w-full text-start py-2 text-lg hover:text-red-500">Ameerica</button>
+                    <button onclick="regionClick('asia')"  class="w-full text-start py-2 text-lg hover:text-red-500">Asia</button>
+                    <button onclick="regionClick('europe')"  class="w-full text-start py-2 text-lg hover:text-red-500">Europe</button>
+                    <button onclick="regionClick('oceania')"  class="w-full text-start py-2 text-lg hover:text-red-500">Oceania</button>
+                </div>
+            </div>
+        </div>
+        <div class="w-full text-end">
+            <button onclick="filterRegion('language')" class="px-8 py-2 text-lg border rounded bg-blue-400 text-white relative">Filter By Language</button>
+            <div id="language" class="hidden">
+                <div  class="absolute top-20 right-20 flex justify-end ">
+                    <ul id="lang-container" class="px-4 bg-white flex flex-col gap-1 mt-2 border w-[13.2rem] py-4 items-start">
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
 <main class="w-2/3 mx-auto">
     <section class="grid grid-cols-4 gap-4" id="country-container">
-        
     </section>
 </main>
 
